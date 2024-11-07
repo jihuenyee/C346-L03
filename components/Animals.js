@@ -4,11 +4,28 @@ import {StyleSheet, Text, View, TextInput, Button, Alert, TouchableOpacity, Imag
 import RNPickerSelect from 'react-native-picker-select';
 import { ToastAndroid } from 'react-native';
 
+const styles = StyleSheet.create({
+    qnContainer: {
+        backgroundColor: '#ECBAB0',
+        padding: 10,
+    },
+    image: {
+        width: '100%',
+        height: 400,
+        borderRadius: 5,
+    },
+    qn: {
+        fontSize: 18,
+        textAlign: 'center',
+        padding: 10,
+    }
+});
+
 const Animals = ({qn, pic}) => {
     return (
-        <View>
-            <Image source={pic} style={{width:300, height:300}}/>
-            <Text>{qn}</Text>
+        <View style={styles.qnContainer}>
+            <Image source={pic} style={styles.image} />
+            <Text style={styles.qn}>{qn}</Text>
         </View>
     )
 }

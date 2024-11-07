@@ -1,12 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react'; // Fixed capitalization for useState
-import {StyleSheet, Text, View, TextInput, Button, Alert, TouchableOpacity, Image, ScrollView} from 'react-native';
+import {StyleSheet, Text, Button, Alert, ScrollView} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import Animals from './components/Animals.js';
+
+const styles = StyleSheet.create({
+    header: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 10,
+        backgroundColor: 'pink',
+        padding: 10,
+    },
+});
 
 const App = () => {
 
     const [answers, setAnswers] = useState(["", "", ""]);
+    const [modalVisible, setModalVisible] = useState(false);
 
     const correctAnswers = ["Apple Jack", "Pinkie Pie", "Rainbow Dash", "Fluttershy", "Rarity", "Twilight Sparkle", "Siblings"];
 
@@ -40,7 +52,7 @@ const App = () => {
   return (
       <ScrollView>
           <StatusBar hidden={true}/>
-          <Text>Welcome to Ji Huen's My Little Pony Quiz!</Text>
+          <Text style={styles.header}>Welcome to Ji Huen's My Little Pony Quiz!</Text>
           <Animals pic={require("./img/apple jack.jpg")} qn={"Which pony is this?"}/>
           <RNPickerSelect
               onValueChange={(value) => handleAnswerChange(0, value)}
@@ -132,6 +144,7 @@ const App = () => {
           />
 
           <Button title="Submit Answers" onPress={checkAnswers} />
+
       </ScrollView>
   )
 }
